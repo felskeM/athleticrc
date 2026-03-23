@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Container from "../components/Container.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+---
+
+<BaseLayout title="Contact | AthleticRC">
+  <section class="section-padding">
+    <Container>
+      <SectionHeading
+        eyebrow="Contact"
+        title="Business-to-business inquiries only."
+        description="This page should eventually include a proper form for dealers, contractors, architects, and spec requests."
+      />
+
+      <div class="card-shell mt-10 max-w-3xl p-6">
+        <form class="grid gap-4 md:grid-cols-2">
+          <input class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none" type="text" placeholder="Name" />
+          <input class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none" type="email" placeholder="Email" />
+          <input class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none md:col-span-2" type="text" placeholder="Company" />
+          <select class="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none md:col-span-2">
+            <option>Reason for inquiry</option>
+            <option>Product information</option>
+            <option>Spec request</option>
+            <option>Installation documentation</option>
+            <option>Sales contact</option>
+          </select>
+          <textarea class="min-h-40 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none md:col-span-2" placeholder="Tell us what you need"></textarea>
+          <button class="rounded-full bg-yellow-400 px-5 py-3 font-semibold text-black md:col-span-2">Send Inquiry</button>
+        </form>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Container from "../components/Container.astro";
+import ProductCard from "../components/ProductCard.astro";
+import ResourceCard from "../components/ResourceCard.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+
+const products = (await getCollection("products")).filter((item) => item.data.featured);
+const resources = (await getCollection("resources")).filter((item) => item.data.featured).slice(0, 4);
+---
+
+<BaseLayout title="AthleticRC | Performance Flooring Systems">
+  <Hero />
+
+  <section class="section-padding">
+    <Container>
+      <SectionHeading
+        eyebrow="Product Systems"
+        title="Built around performance, specs, and installation clarity."
+        description="This structure gives you a scalable way to present products, downloadable technical documentation, and B2B contact pathways."
+      />
+
+      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+        {products.map((product) => (
+          <ProductCard
+            href={`/products/${product.slug}`}
+            title={product.data.title}
+            summary={product.data.summary}
+            tags={product.data.formatLabels}
+          />
+        ))}
+      </div>
+    </Container>
+  </section>
+
+  <section class="section-padding border-y border-white/10 bg-black/20">
+    <Container>
+      <SectionHeading
+        eyebrow="Resources"
+        title="Fast access to brochures, spec sheets, and installation guides."
+        description="Each product page can surface its own document stack while the full resource center gives reps, dealers, and contractors one place to pull PDFs."
+      />
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        {resources.map((resource) => (
+          <ResourceCard
+            href={resource.data.href}
+            title={resource.data.title}
+            summary={resource.data.summary}
+            type={resource.data.documentType}
+            product={resource.data.product}
+          />
+        ))}
+</BaseLayout>

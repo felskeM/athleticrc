@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Container from "../../components/Container.astro";
+import ResourceCard from "../../components/ResourceCard.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+
+const resources = await getCollection("resources");
+---
+
+<BaseLayout title="Resources | AthleticRC">
+  <section class="section-padding">
+    <Container>
+      <SectionHeading
+        eyebrow="Download Center"
+        title="Technical documents in one place."
+        description="This page can later become filterable by product, format, application, or document type."
+      />
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {resources.map((resource) => (
+          <ResourceCard
+            href={resource.data.href}
+            title={resource.data.title}
+            summary={resource.data.summary}
+            type={resource.data.documentType}
+            product={resource.data.product}
+          />
+        ))}
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
