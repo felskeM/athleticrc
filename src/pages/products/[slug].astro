@@ -20,24 +20,24 @@ const { Content } = await render(product);
   <section class="section-padding">
     <Container>
       <p class="eyebrow">Product Detail</p>
-      <div class="mt-4 grid gap-10 lg:grid-cols-[1fr_0.7fr]">
+      <div class="mt-5 grid gap-10 lg:grid-cols-[1fr_0.74fr]">
         <div>
-          <h1 class="text-4xl font-semibold text-white md:text-6xl">{product.data.title}</h1>
-          <p class="mt-5 max-w-3xl text-lg leading-8 text-white/70">{product.data.summary}</p>
+          <h1 class="text-4xl font-semibold tracking-tight text-[var(--arc-white)] md:text-6xl">{product.data.title}</h1>
+          <p class="mt-5 max-w-3xl text-lg leading-8 text-[var(--arc-muted)]">{product.data.summary}</p>
 
           <div class="mt-8 flex flex-wrap gap-2">
             {product.data.formatLabels.map((label: string) => (
-              <span class="rounded-full border border-white/10 px-3 py-1 text-sm text-white/70">{label}</span>
+              <span class="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-sm text-[var(--arc-muted)]">{label}</span>
             ))}
           </div>
 
-          <div class="prose prose-invert mt-10 max-w-none prose-p:text-white/75">
+          <div class="prose prose-invert mt-10 max-w-none prose-headings:text-[var(--arc-white)] prose-p:text-[var(--arc-muted)] prose-strong:text-[var(--arc-white)]">
             <Content />
           </div>
         </div>
 
         <aside class="card-shell h-fit p-6">
-          <h2 class="text-xl font-semibold text-white">Downloads</h2>
+          <h2 class="text-xl font-semibold text-[var(--arc-white)]">Downloads</h2>
           <div class="mt-5 flex flex-col gap-3">
             {product.data.downloads.map((download: { label: string; href: string }) => (
               <Button href={download.href} variant="secondary">{download.label}</Button>

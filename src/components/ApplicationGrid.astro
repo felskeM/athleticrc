@@ -1,0 +1,43 @@
+---
+import Container from "./Container.astro";
+import SectionHeading from "./SectionHeading.astro";
+
+const applications = [
+  {
+    title: "Fitness",
+    summary: "Impact-ready surfaces for gyms, training spaces, and wellness facilities.",
+  },
+  {
+    title: "Education",
+    summary: "Durable flooring systems for schools, rec centers, and institutional spaces.",
+  },
+  {
+    title: "Commercial",
+    summary: "Strong presentation and dependable wear characteristics for public-facing interiors.",
+  },
+  {
+    title: "Support Spaces",
+    summary: "Locker rooms, circulation areas, and secondary-use zones that still demand performance.",
+  },
+];
+---
+
+<section class="section-padding">
+  <Container>
+    <SectionHeading
+      eyebrow="Applications"
+      title="Designed for spaces that take real use."
+      description="The site should communicate where each flooring system belongs, not just list product names and PDFs."
+    />
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+      {applications.map((application) => (
+        <article class="card-shell p-6 transition duration-200 hover:border-[var(--arc-blue)]/30 hover:bg-white/[0.06]">
+          <div class="mb-5 h-1.5 w-14 rounded-full bg-[var(--arc-blue)]"></div>
+          <h3 class="text-xl font-semibold text-[var(--arc-white)]">{application.title}</h3>
+          <p class="mt-3 text-sm leading-7 text-[var(--arc-muted)]">{application.summary}</p>
+        </article>
+      ))}
+    </div>
+  </Container>
+</section>

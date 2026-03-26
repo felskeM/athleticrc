@@ -1,44 +1,85 @@
 ---
 import Container from "./Container.astro";
 import Button from "./Button.astro";
+import StatPill from "./StatPill.astro";
 ---
 
-<section class="section-padding overflow-hidden">
+<section class="section-padding relative overflow-hidden">
+  <div class="pointer-events-none absolute inset-0">
+    <div class="absolute inset-0 grid-sheen opacity-[0.08]"></div>
+    <div class="absolute left-[-10%] top-16 h-72 w-72 rounded-full bg-[var(--arc-blue)]/20 blur-3xl"></div>
+    <div class="absolute bottom-0 right-[-8%] h-80 w-80 rounded-full bg-[var(--arc-blue)]/12 blur-3xl"></div>
+  </div>
+
   <Container>
-    <div class="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
-      <div>
+    <div class="grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr]">
+      <div class="relative z-10">
         <p class="eyebrow">Performance Flooring Systems</p>
-        <h1 class="mt-4 max-w-4xl text-5xl font-semibold tracking-tight text-white md:text-7xl">
-          Spec-driven rubber flooring for athletic, commercial, and high-traffic environments.
+        <h1 class="mt-5 max-w-5xl text-5xl font-semibold leading-[0.94] tracking-tight text-[var(--arc-white)] md:text-7xl xl:text-[5.25rem]">
+          Rubber flooring built for commercial durability, technical clarity, and serious environments.
         </h1>
-        <p class="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-          AthleticRC serves as an informational hub for product formats, technical resources, installation guidance,
-          and business-to-business inquiries.
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-[var(--arc-muted)] md:text-xl">
+          AthleticRC is the business-to-business information hub for product formats, technical documentation,
+          installation guidance, and specification-driven flooring systems.
         </p>
+
         <div class="mt-8 flex flex-wrap gap-4">
-          <Button href="/products">View Products</Button>
-          <Button href="/resources" variant="secondary">Download Resources</Button>
+          <Button href="/products">Explore Products</Button>
+          <Button href="/resources" variant="secondary">Browse Resources</Button>
+        </div>
+
+        <div class="mt-10 grid max-w-3xl gap-4 sm:grid-cols-3">
+          <StatPill label="Formats" value="Rolls, Tile, Sheets" />
+          <StatPill label="Focus" value="B2B Specification" />
+          <StatPill label="Resources" value="Install + Spec PDFs" />
         </div>
       </div>
 
-      <div class="card-shell relative min-h-[420px] overflow-hidden p-6">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(247,207,61,0.18),transparent_40%)]"></div>
-        <div class="relative flex h-full flex-col justify-between rounded-[1.5rem] border border-white/10 bg-black/30 p-6">
-          <div>
-            <p class="text-sm font-medium text-white/60">Featured System</p>
-            <h2 class="mt-3 text-3xl font-semibold text-white">VersaTREAD</h2>
-            <p class="mt-4 text-sm leading-7 text-white/70">
-              Rolls, tile, and sheet formats built for traction, durability, and clean commercial presentation.
+      <div class="relative z-10">
+        <div class="card-shell relative overflow-hidden p-5 md:p-6">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(28,63,142,0.25),transparent_36%)]"></div>
+          <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(252,250,250,0.05),transparent_48%,rgba(28,63,142,0.1))]"></div>
+
+          <div class="relative rounded-[1.5rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.015))] p-6">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--arc-muted)]">Featured System</p>
+                <h2 class="mt-3 text-3xl font-semibold text-[var(--arc-white)] md:text-4xl">VersaTREAD</h2>
+              </div>
+
+              <span class="rounded-full border border-[var(--arc-blue)]/30 bg-[var(--arc-blue)]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--arc-accent-2)]">
+                Active Line
+              </span>
+            </div>
+
+            <p class="mt-5 max-w-xl text-sm leading-7 text-[var(--arc-muted)] md:text-base">
+              A resilient rubber flooring line available in multiple formats for high-traffic commercial,
+              fitness, education, and support spaces.
             </p>
-          </div>
-          <div class="grid gap-3 text-sm text-white/80 sm:grid-cols-2">
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">Rolls</div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">Puzzle Tile</div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">Sheets</div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">Technical Resources</div>
+
+            <div class="mt-7 grid gap-3 sm:grid-cols-2">
+              <div class="panel-shell p-4">
+                <p class="text-xs uppercase tracking-[0.18em] text-[var(--arc-muted)]">Formats</p>
+                <p class="mt-2 text-lg font-semibold text-[var(--arc-white)]">Rolls · Puzzle Tile · Sheets</p>
+              </div>
+              <div class="panel-shell p-4">
+                <p class="text-xs uppercase tracking-[0.18em] text-[var(--arc-muted)]">Applications</p>
+                <p class="mt-2 text-lg font-semibold text-[var(--arc-white)]">Athletic · Commercial · Education</p>
+              </div>
+              <div class="panel-shell p-4">
+                <p class="text-xs uppercase tracking-[0.18em] text-[var(--arc-muted)]">Technical Access</p>
+                <p class="mt-2 text-lg font-semibold text-[var(--arc-white)]">Specs · Guides · Brochures</p>
+              </div>
+              <div class="panel-shell p-4">
+                <p class="text-xs uppercase tracking-[0.18em] text-[var(--arc-muted)]">Installation System</p>
+                <p class="mt-2 text-lg font-semibold text-[var(--arc-white)]">Compatible with FAS1</p>
+              </div>
+            </div>
+
+            <div class="mt-7 flex flex-wrap gap-3">
+              <Button href="/products/versatread">View VersaTREAD</Button>
+              <Button href="/pdfs/versatread-product-spec-sheet.pdf" variant="secondary">Open Spec Sheet</Button>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </Container>
 </section>

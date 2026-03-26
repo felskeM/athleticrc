@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import Container from "./Container.astro";
+import ProductCard from "./ProductCard.astro";
+import SectionHeading from "./SectionHeading.astro";
+
+const products = (await getCollection("products")).filter((item) => item.data.featured);
+---
+
+<section class="section-padding border-y border-white/10 bg-black/20">
+  <Container>
+    <SectionHeading
+      eyebrow="Product Systems"
+      title="Built around performance, formats, and technical clarity."
+      description="This structure gives the site a scalable way to present flooring systems, accessories, and installation support without feeling like a generic brochure page."
+    />
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      {products.map((product) => (
+        <ProductCard
+          href={`/products/${product.slug}`}
+          title={product.data.title}
+          summary={product.data.summary}
+          tags={product.data.formatLabels}
+        />
+      ))}
+    </div>
+  </Container>
+</section>

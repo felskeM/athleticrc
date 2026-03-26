@@ -7,10 +7,14 @@ const products = defineCollection({
     featured: z.boolean().default(false),
     applicationTags: z.array(z.string()).default([]),
     formatLabels: z.array(z.string()).default([]),
-    downloads: z.array(z.object({
-      label: z.string(),
-      href: z.string(),
-    })).default([]),
+    downloads: z
+      .array(
+        z.object({
+          label: z.string(),
+          href: z.string(),
+        }),
+      )
+      .default([]),
     heroImage: z.string().optional(),
   }),
 });

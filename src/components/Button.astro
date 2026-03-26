@@ -1,15 +1,19 @@
 ---
 interface Props {
   href?: string;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "ghost";
 }
 
 const { href, variant = "primary" } = Astro.props;
 
-const classes =
-  variant === "primary"
-    ? "inline-flex items-center justify-center rounded-full bg-[var(--arc-blue)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--arc-accent-2)]"
-    : "inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10";
+const classes = {
+  primary:
+    "inline-flex items-center justify-center rounded-full border border-transparent bg-[var(--arc-blue)] px-5 py-3 text-sm font-semibold text-[var(--arc-white)] shadow-[0_10px_30px_rgba(var(--arc-accent-rgb),0.28)] transition duration-200 hover:bg-[var(--arc-blue-soft)] hover:shadow-[0_14px_36px_rgba(var(--arc-accent-rgb),0.35)]",
+  secondary:
+    "inline-flex items-center justify-center rounded-full border border-white/12 bg-white/5 px-5 py-3 text-sm font-semibold text-[var(--arc-white)] transition duration-200 hover:border-[var(--arc-blue)]/35 hover:bg-white/10",
+  ghost:
+    "inline-flex items-center justify-center rounded-full px-4 py-3 text-sm font-semibold text-[var(--arc-white)] transition duration-200 hover:bg-white/6 hover:text-[var(--arc-accent-2)]",
+}[variant];
 ---
 
 {href ? (
