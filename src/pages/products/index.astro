@@ -14,13 +14,13 @@ const products = await getCollection("products");
       <SectionHeading
         eyebrow="Products"
         title="Commercial and athletic flooring systems."
-        description="Starter collection page for product families, formats, and linked technical resources."
+        description="Collection page for VersaTREAD, VersaRUBBER, FAS1, and future product families with linked technical resources."
       />
 
       <div class="mt-10 grid gap-6 lg:grid-cols-2">
         {products.map((product) => (
           <ProductCard
-            href={`/products/${product.slug}`}
+            href={`/products/${product.id}`}
             title={product.data.title}
             summary={product.data.summary}
             tags={product.data.applicationTags}

@@ -1,18 +1,19 @@
 ---
-import { getCollection, render } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Container from "../../components/Container.astro";
 import Button from "../../components/Button.astro";
 
 export async function getStaticPaths() {
   const products = await getCollection("products");
+
   return products.map((product) => ({
-    params: { slug: product.slug },
+    params: { slug: product.id },
     props: { product },
   }));
 }
 
-const { product } = Astro.props;
+const { product } = Astro.props as { product: CollectionEntry<"products"> };
 const { Content } = await render(product);
 ---
 
@@ -25,11 +26,60 @@ const { Content } = await render(product);
           <h1 class="text-4xl font-semibold tracking-tight text-[var(--arc-white)] md:text-6xl">{product.data.title}</h1>
           <p class="mt-5 max-w-3xl text-lg leading-8 text-[var(--arc-muted)]">{product.data.summary}</p>
 
+          {product.data.keySpecs.length > 0 && (
+            <div class="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              {product.data.keySpecs.map((spec) => (
+                <div class="panel-shell p-4">
+                  <p class="text-xs uppercase tracking-[0.18em] text-[var(--arc-muted)]">{spec.label}</p>
+                  <p class="mt-2 text-base font-semibold text-[var(--arc-white)]">{spec.value}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
           <div class="mt-8 flex flex-wrap gap-2">
-            {product.data.formatLabels.map((label: string) => (
+            {product.data.formatLabels.map((label) => (
               <span class="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-sm text-[var(--arc-muted)]">{label}</span>
             ))}
           </div>
+
+          {product.data.formats.length > 0 && (
+            <div class="mt-10 space-y-6">
+              {product.data.formats.map((format) => (
+                <section class="card-shell p-6">
+                  <div class="flex flex-col gap-2 border-b border-white/10 pb-4">
+                    <h2 class="text-2xl font-semibold text-[var(--arc-white)]">{format.name}</h2>
+                    {format.description && <p class="text-sm leading-7 text-[var(--arc-muted)]">{format.description}</p>}
+                  </div>
+
+                  <div class="mt-5 overflow-x-auto">
+                    <table class="w-full min-w-[620px] border-separate border-spacing-y-2 text-left">
+                      <thead>
+                        <tr>
+                          <th class="px-4 py-2 text-xs uppercase tracking-[0.16em] text-[var(--arc-muted)]">Color</th>
+                          <th class="px-4 py-2 text-xs uppercase tracking-[0.16em] text-[var(--arc-muted)]">Descriptor</th>
+                          <th class="px-4 py-2 text-xs uppercase tracking-[0.16em] text-[var(--arc-muted)]">Size</th>
+                          <th class="px-4 py-2 text-xs uppercase tracking-[0.16em] text-[var(--arc-muted)]">Thicknesses</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {format.variants.map((variant) => (
+                          <tr class="bg-white/[0.03]">
+                            <td class="rounded-l-2xl px-4 py-4 text-sm font-medium text-[var(--arc-white)]">{variant.color}</td>
+                            <td class="px-4 py-4 text-sm text-[var(--arc-muted)]">{variant.descriptor ?? "—"}</td>
+                            <td class="px-4 py-4 text-sm text-[var(--arc-muted)]">{variant.size}</td>
+                            <td class="rounded-r-2xl px-4 py-4 text-sm text-[var(--arc-muted)]">
+                              {variant.thicknesses.length > 0 ? variant.thicknesses.join(", ") : "—"}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+              ))}
+            </div>
+          )}
 
           <div class="prose prose-invert mt-10 max-w-none prose-headings:text-[var(--arc-white)] prose-p:text-[var(--arc-muted)] prose-strong:text-[var(--arc-white)]">
             <Content />
@@ -39,9 +89,11 @@ const { Content } = await render(product);
         <aside class="card-shell h-fit p-6">
           <h2 class="text-xl font-semibold text-[var(--arc-white)]">Downloads</h2>
           <div class="mt-5 flex flex-col gap-3">
-            {product.data.downloads.map((download: { label: string; href: string }) => (
-              <Button href={download.href} variant="secondary">{download.label}</Button>
-            ))}
+            {product.data.downloads.length > 0 ? (
+              product.data.downloads.map((download) => <Button href={download.href} variant="secondary">{download.label}</Button>)
+            ) : (
+              <p class="text-sm leading-7 text-[var(--arc-muted)]">Documentation for this product can be added here once PDFs are ready.</p>
+            )}
           </div>
         </aside>
       </div>

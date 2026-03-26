@@ -16,14 +16,14 @@ const products = (await getCollection("products")).filter((item) => item.data.fe
     />
 
     <div class="mt-10 grid gap-6 lg:grid-cols-2">
-      {products.map((product) => (
-        <ProductCard
-          href={`/products/${product.slug}`}
-          title={product.data.title}
-          summary={product.data.summary}
-          tags={product.data.formatLabels}
-        />
-      ))}
-    </div>
+        {products.map((product) => (
+          <ProductCard
+            href={`/products/${product.id}`}
+            title={product.data.title}
+            summary={product.data.summary}
+            tags={product.data.formatLabels}
+          />
+        ))}
+      </div>
   </Container>
 </section>
