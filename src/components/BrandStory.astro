@@ -1,0 +1,40 @@
+---
+import Container from "./Container.astro";
+import SectionHeading from "./SectionHeading.astro";
+---
+
+<section class="section-padding border-y border-white/10 bg-black/20">
+  <Container>
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div>
+        <SectionHeading
+          eyebrow="Brand Story"
+          title="Give the site a visual story even before the final product shoot exists."
+          description="Use facility photography, operations detail shots, material closeups, staged environmental images, and support-process imagery to make the brand feel real now."
+        />
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="card-shell p-3 sm:translate-y-6">
+          <div class="image-frame aspect-[4/5] rounded-[1.25rem]">
+            <img src="/images/brand/about-arc.jpg" alt="Athletic Rubber Converting brand or facility image" class="h-full w-full object-cover" loading="lazy" />
+          </div>
+        </div>
+        <div class="grid gap-4">
+          <div class="card-shell p-3">
+            <div class="image-frame aspect-[4/3] rounded-[1.25rem]">
+              <img src="/images/brand/operations-detail.jpg" alt="AthleticRC operations detail" class="h-full w-full object-cover" loading="lazy" />
+            </div>
+          </div>
+          <div class="panel-shell p-6">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--arc-accent-2)]">Image Strategy</p>
+            <p class="mt-3 text-lg font-semibold text-[var(--arc-white)]">Use process and environment visuals now.</p>
+            <p class="mt-3 text-sm leading-7 text-[var(--arc-muted)]">
+              When exact product photography is ready later, you can replace only the image paths without changing the section structure.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,38 @@
+---
+import Container from "./Container.astro";
+
+const images = [
+  "/images/gallery/arc-gallery-01.jpg",
+  "/images/gallery/arc-gallery-02.jpg",
+  "/images/gallery/arc-gallery-03.jpg",
+  "/images/gallery/arc-gallery-04.jpg",
+  "/images/gallery/arc-gallery-05.jpg",
+  "/images/gallery/arc-gallery-06.jpg",
+  "/images/gallery/arc-gallery-07.jpg",
+  "/images/gallery/arc-gallery-08.jpg",
+  "/images/gallery/arc-gallery-09.jpg",
+  "/images/gallery/arc-gallery-10.jpg",
+  "/images/gallery/arc-gallery-11.jpg",
+  "/images/gallery/arc-gallery-12.jpg",
+  "/images/gallery/arc-gallery-13.jpg",
+  "/images/gallery/arc-gallery-14.jpg",
+  "/images/gallery/arc-gallery-15.jpg",
+  "/images/gallery/arc-gallery-16.jpg",
+  "/images/gallery/arc-gallery-17.jpg",
+  "/images/gallery/arc-gallery-18.jpg",
+];
+---
+
+<section class="pb-16 md:pb-24">
+  <Container>
+    <div class="grid gap-4 md:grid-cols-3">
+      {images.map((image, index) => (
+        <div class="card-shell p-3">
+          <div class={`image-frame rounded-[1.25rem] ${index % 3 === 1 ? "aspect-[4/5]" : "aspect-[4/3]"}`}>
+            <img src={image} alt={`AthleticRC gallery image ${index + 1}`} class="h-full w-full object-cover" loading="lazy" />
+          </div>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

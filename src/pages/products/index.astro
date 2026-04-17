@@ -11,13 +11,28 @@ const products = await getCollection("products");
 <BaseLayout title="Products | AthleticRC">
   <section class="section-padding">
     <Container>
-      <SectionHeading
-        eyebrow="Products"
-        title="Commercial and athletic flooring systems."
-        description="Collection page for VersaTREAD, VersaRUBBER, FAS1, and future product families with linked technical resources."
-      />
+      <div class="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
+        <SectionHeading
+          eyebrow="Products"
+          title="Commercial and athletic flooring systems."
+          description="Collection page for VersaTREAD, VersaRUBBER, FAS1, and future product families with linked technical resources."
+        />
 
-      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="card-shell p-3">
+            <div class="image-frame aspect-[4/3] rounded-[1.25rem]">
+              <img src="/images/gallery/arc-gallery-01.jpg" alt="AthleticRC product category visual" class="h-full w-full object-cover" loading="lazy" />
+            </div>
+          </div>
+          <div class="card-shell p-3">
+            <div class="image-frame aspect-[4/3] rounded-[1.25rem]">
+              <img src="/images/gallery/arc-gallery-06.jpg" alt="AthleticRC product detail visual" class="h-full w-full object-cover" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 grid gap-6 lg:grid-cols-3">
         {products.map((product) => (
           <ProductCard
             href={`/products/${product.id}`}

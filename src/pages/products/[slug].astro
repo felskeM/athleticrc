@@ -15,6 +15,8 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props as { product: CollectionEntry<"products"> };
 const { Content } = await render(product);
+
+const heroImage = product.data.heroImage ?? "/images/products/product-placeholder.jpg";
 ---
 
 <BaseLayout title={`${product.data.title} | AthleticRC`} description={product.data.summary}>

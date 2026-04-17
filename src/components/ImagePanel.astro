@@ -1,0 +1,30 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  aspect?: "square" | "video" | "portrait" | "wide";
+  title?: string;
+  description?: string;
+}
+
+const { src, alt, aspect = "video", title, description } = Astro.props;
+
+const aspectClass = {
+  square: "aspect-square",
+  video: "aspect-[4/3]",
+  portrait: "aspect-[4/5]",
+  wide: "aspect-[16/9]",
+}[aspect];
+---
+
+<div class="image-shell p-3">
+  <div class={`image-frame ${aspectClass}`}>
+    <img src={src} alt={alt} class="h-full w-full object-cover" loading="lazy" />
+  </div>
+  {(title || description) && (
+    <div class="px-2 pb-1 pt-4">
+      {title && <h3 class="text-lg font-semibold text-[var(--arc-white)]">{title}</h3>}
+      {description && <p class="mt-2 text-sm leading-7 text-[var(--arc-muted)]">{description}</p>}
+    </div>
+  )}
+</div>

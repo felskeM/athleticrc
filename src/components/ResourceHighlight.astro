@@ -9,11 +9,19 @@ const resources = (await getCollection("resources")).filter((item) => item.data.
 
 <section class="section-padding">
   <Container>
-    <SectionHeading
-      eyebrow="Resources"
-      title="Fast access to brochures, spec sheets, and install guides."
-      description="Each product page can surface its own documentation stack while the full resource center stays useful for reps, contractors, and spec-driven buyers."
-    />
+    <div class="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+      <SectionHeading
+        eyebrow="Resources"
+        title="Fast access to brochures, spec sheets, and install guides."
+        description="Each product page can surface its own documentation stack while the full resource center stays useful for reps, contractors, and spec-driven buyers."
+      />
+
+      <div class="card-shell p-3">
+        <div class="image-frame aspect-[16/9] rounded-[1.25rem]">
+          <img src="/images/gallery/arc-gallery-05.jpg" alt="AthleticRC documentation or product environment visual" class="h-full w-full object-cover" loading="lazy" />
+        </div>
+      </div>
+    </div>
 
     <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
       {resources.map((resource) => (

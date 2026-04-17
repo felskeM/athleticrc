@@ -27,14 +27,10 @@ const products = defineCollection({
     category: z.enum(["flooring", "installation-system"]),
     applicationTags: z.array(z.string()).default([]),
     formatLabels: z.array(z.string()).default([]),
-    keySpecs: z
-      .array(
-        z.object({
-          label: z.string(),
-          value: z.string(),
-        }),
-      )
-      .default([]),
+    keySpecs: z.array(z.object({
+      label: z.string(),
+      value: z.string(),
+    })).default([]),
     formats: z.array(productFormatSchema).default([]),
     downloads: z.array(downloadSchema).default([]),
     heroImage: z.string().optional(),
@@ -44,13 +40,7 @@ const products = defineCollection({
 const resources = defineCollection({
   schema: z.object({
     title: z.string(),
-    documentType: z.enum([
-      "Brochure",
-      "Spec Sheet",
-      "Installation Guide",
-      "Warranty",
-      "Adhesive Guide",
-    ]),
+    documentType: z.enum(["Brochure", "Spec Sheet", "Installation Guide", "Warranty", "Adhesive Guide"]),
     product: z.string(),
     href: z.string(),
     summary: z.string(),
