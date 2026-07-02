@@ -19,11 +19,25 @@ import SectionHeading from "../components/SectionHeading.astro";
           <input class="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--arc-white)] outline-none placeholder:text-[var(--arc-muted)]" type="email" placeholder="Email" />
           <input class="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--arc-white)] outline-none placeholder:text-[var(--arc-muted)] md:col-span-2" type="text" placeholder="Company" />
           <select class="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--arc-white)] outline-none md:col-span-2">
-            <option>Reason for inquiry</option>
-            <option>Product information</option>
-            <option>Spec request</option>
-            <option>Installation documentation</option>
-            <option>Sales contact</option>
+            <option
+            value=""
+            disabled
+            selected
+            class="text-[var(--arc-muted)]">
+            Select a reason for inquiry
+            </option>
+            <option class="text-[var(--arc-white)]">
+              Product information
+            </option>
+            <option class="text-[var(--arc-white)]">
+              Spec request
+            </option>
+            <option class="text-[var(--arc-white)]">
+              Installation documentation
+            </option>
+            <option class="text-[var(--arc-white)]">
+              Sales contact
+            </option>
           </select>
           <textarea class="min-h-40 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-[var(--arc-white)] outline-none placeholder:text-[var(--arc-muted)] md:col-span-2" placeholder="Tell us what you need"></textarea>
           <button class="rounded-full bg-[var(--arc-blue)] px-5 py-3 font-semibold text-[var(--arc-white)] transition hover:bg-[var(--arc-blue-soft)] md:col-span-2">

@@ -41,6 +41,19 @@ img {
   max-width: 100%;
 }
 
+ /* FOR SAFARI */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: rgba(255,255,255,0.04);
+  color: var(--arc-white);
+}
+
+select option {
+  background-color: var(--arc-surface-3);
+  color: var(--arc-white);
+}
+
 ::selection {
   background: rgba(28, 63, 142, 0.35);
   color: var(--arc-white);

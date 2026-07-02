@@ -35,7 +35,7 @@ const products = await getCollection("products");
       <div class="mt-10 grid gap-6 lg:grid-cols-3">
         {products.map((product) => (
           <ProductCard
-            href={`/products/${product.id}`}
+            href={`../content/products/${product.id}`}
             title={product.data.title}
             summary={product.data.summary}
             tags={product.data.applicationTags}
